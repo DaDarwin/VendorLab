@@ -6,10 +6,10 @@ import { itemServices } from "../services/ItemServices.js";
 export class ItemController{
 
     constructor(){
-        // AppState.on('money',this.updateMoney())
-        AppState.on('boughtItems', this.drawCart())
         this.drawVendr()
-        console.log('Item Controller')
+        AppState.on('money',this.updateMoney)
+        AppState.on('boughtItems', this.drawCart)
+        // console.log('Item Controller')
     }
 
     drawVendr(){
@@ -19,6 +19,12 @@ export class ItemController{
         document.getElementById('Vendr').innerHTML = content
     }
 
+    drawCart(){
+        const items = AppState.boughtItems
+        let content = ''
+        items.forEach(item => content += item.boughtItem)
+        document.getElementById('Purchased Items').innerHTML = content
+    }
     buyItem(itemName){
         itemServices.buyItem(itemName)
     }
@@ -27,12 +33,6 @@ export class ItemController{
         itemServices.addQuarter()
     }
 
-    drawCart(){
-        const items = AppState.boughtItems
-        let content = ''
-        items.forEach(item => content += item.boughtItem)
-        document.getElementById('Purchased Items').innerHTML = content
-    }
 
     updateMoney(){
         document.getElementById('money').innerText = `$${AppState.money}`

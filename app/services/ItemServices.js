@@ -8,6 +8,7 @@ class ItemServices{
 
     addQuarter(){
         AppState.money += .25
+        console.log(AppState.money)
     }
 
 }

@@ -12,10 +12,10 @@ export class Item{
     }
 
     get itemSlot(){
-        return /**HTML */ '<div>${this.name}</div>'
+        return `<div>${this.name}</div>`
         }
 
     get boughtItem(){
-        return /**HTML */ '<div>${this.name}</div>'
+        return `<div>${this.name}</div>`
     }
 }
